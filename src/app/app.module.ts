@@ -13,6 +13,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from './shared/shared.module';
 import {UploadService} from '../app/upload.service';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,11 @@ import {HttpClientModule} from '@angular/common/http';
     //MatFileUploadModule,
     SharedModule.forRoot(),
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    SweetAlert2Module
   ],
   providers: [ UploadService],
   bootstrap: [AppComponent]

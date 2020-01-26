@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
+
 import { SlideItem, SlideService } from '../slide.service';
-import { MatFileUploadModule } from 'angular-material-fileupload';
 import {UploadService} from '../../upload.service';
+import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms'
+
 
 @Component({
   selector: 'app-crear',
@@ -15,8 +16,15 @@ export class CrearComponent implements OnInit {
 
   uploadedFiles:Array<File>;
   slide:SlideItem[]=[];
-  autoplay:"";
-  constructor(service:SlideService, private uploadService:UploadService) { 
+  alerta=false;
+  
+  archivoForm:FormGroup=this.fb.group(
+    {
+      separador:["",Validators.required],
+    }
+  );
+
+  constructor(service:SlideService, private uploadService:UploadService, private fb:FormBuilder) { 
     this.slide=service.getItemSlide();
   }
 
@@ -24,7 +32,8 @@ export class CrearComponent implements OnInit {
   }
 
   onUpload(){
-    console.log("load")
+    const separador=this.archivoForm.value;
+    let separator= separador.separador;
     let formData=new FormData();
     for (let i=0; i<this.uploadedFiles.length;i++){
       formData.append("uploads[]",this.uploadedFiles[i],this.uploadedFiles[i].name);
@@ -34,6 +43,11 @@ export class CrearComponent implements OnInit {
     },(err)=>{
       console.log('Error: ',err)
     })
+    this.uploadService.uploadSeparator(separator).subscribe((res)=>{
+      console.log('Response: ',res)
+    }),(err)=>{
+      console.log("Error: ", err)
+    }
   }
 
   onFileChange(e){

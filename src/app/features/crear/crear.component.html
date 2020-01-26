@@ -10,13 +10,29 @@
             </div>  
         </div>
         <div fxFlex="40" fxLayout class="custom-file" >
-            <form action="/api/upload" method="POST" enctype="multipart/form-data" style="align-self: center;">
-                    <button color="warning" mat-raised-button><input type="file" class="custom-file" id="input-custom-file" (change)="onFileChange($event)"></button>
-                    <label class="mat-label" style="margin: 20px" >Choose a file</label>
+            <form [formGroup]="archivoForm" action="/api/upload" method="POST" enctype="multipart/form-data" style="align-self: center;">
+                <mat-form-field>
+                    <input matInput placeholder="Separator" name="separador"  required formControlName="separador">
+                <mat-error *ngIf="archivoForm.get('separador').errors?.required"> Debe ingresar un separador</mat-error>
+                </mat-form-field>
+                <br/>
+                <button color="warning" mat-raised-button><input type="file" class="custom-file" id="input-custom-file" (change)="onFileChange($event)"></button>
+                <label class="mat-label" style="margin: 20px" >Choose a file</label>
             </form>
         </div>
         <div fxFlex="40" class="button" >
                 <button style="width: 100%;" color="accent" mat-raised-button (click)="onUpload()"> UPLOAD </button>
+        </div>
+        <div fxFlex="40" *ngIf="alert==true">
+                <swal
+                #deleteSwal
+                title="Intentalo de nuevo"
+                text="Parece que no has cargado ningún archivo. Carga uno real esta vez."
+                icon="question"
+                [showCancelButton]="true"
+                [focusCancel]="true"
+                (confirm)="deleteFile(file)">
+              </swal>
         </div>
     </div> 
 </div>
