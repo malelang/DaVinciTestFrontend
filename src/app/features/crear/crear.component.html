@@ -1,0 +1,54 @@
+<div class="background" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="30px">
+    <div class="mat-display-2 subtitle"  fxFlex="10">
+        Just drop your files like it's hot potato
+    </div>
+    
+    <div class="inputbox" fxFlex="60" fxLayout="column" fxItemAlign="center center" fxlayoutGap="40px">
+        <div fxFlex="30" fxLayout style="padding:30px">
+            <div class="mat-body" style="align-self: center;">
+            We are the ones who take charge of assembling all of your data and help you with the organization. Don't worry, just upload your file here.
+            </div>  
+        </div>
+        <div fxFlex="40" fxLayout class="custom-file" >
+            <form action="/api/upload" method="POST" enctype="multipart/form-data" style="align-self: center;">
+                    <button color="warning" mat-raised-button><input type="file" class="custom-file" id="input-custom-file" (change)="onFileChange($event)"></button>
+                    <label class="mat-label" style="margin: 20px" >Choose a file</label>
+            </form>
+        </div>
+        <div fxFlex="40" class="button" >
+                <button style="width: 100%;" color="accent" mat-raised-button (click)="onUpload()"> UPLOAD </button>
+        </div>
+    </div> 
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-carousel
+  timings="250ms ease-in"
+  [autoplay]="false"
+  interval="5000"
+  color="accent"
+  maxWidth="600px"
+  proportion="30"
+  slides="3"
+  [loop]="false"
+  [hideArrows]="false"
+  [hideIndicators]="false"
+  [useKeyboard]="true"
+  [useMouseWheel]="true"
+  orientation="ltr">
+  <mat-carousel-slide
+    #matCarouselSlide
+    *ngFor="let slide of slides; let i = index"
+    [image]="slide.image"
+    overlayColor="#00000040"
+    [hideOverlay]="true"
+  ></mat-carousel-slide>
+</mat-carousel> -->

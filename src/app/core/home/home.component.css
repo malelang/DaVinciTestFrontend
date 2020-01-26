@@ -1,0 +1,20 @@
+.background{
+    background-image: url("../../../assets/retailbg.jpg");
+    height: 100%;
+    
+}
+
+.container{
+    height: 100%;
+    overflow: hidden;
+}
+
+.principal{
+    color: white;
+    text-align: end;
+    margin-right: 10px;
+}
+
+.item1{
+    width: 30%;
+}
