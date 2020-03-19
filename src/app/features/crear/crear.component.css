@@ -23,3 +23,11 @@
     padding: 30px;
     width:50%;
 }
+
+.alerta{
+    background-color: rgba(250, 128, 114, 0.603); 
+    border-radius: 50%; 
+    margin-bottom: 30px; 
+    width: 90%; 
+    border-color: rgb(248, 76, 46);
+}
